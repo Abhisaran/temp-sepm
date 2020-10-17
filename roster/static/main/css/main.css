@@ -1,0 +1,245 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    background: #ffffff;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+/*sidebar style*/
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background: #E1BEE7;
+}
+
+p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    background: #38404a;
+    /*background:#29adeb;*/
+    color: #ffffff;
+    transition: all 0.3s;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    align-content: center;
+    align-items: center;
+}
+
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #29adeb;
+    box-sizing: border-box;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+
+.avatar {
+    max-width: 60% !important;
+    margin: 20px;
+}
+
+.password {
+    /*background: linear-gradient(to right, #9C27B0, #E040FB) !important;*/
+    background: rgba(92, 152, 241, 1); !important;
+
+    color: #fff !important;
+    margin-left: 35%;
+    font-size: 12px;
+
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+
+}
+
+.logout {
+    /*background: linear-gradient(to right, #9C27B0, #E040FB) !important;*/
+    background: rgba(92, 152, 241, 1); !important;
+    color: #fff !important;
+    max-width: 100%;
+    display: block;
+    margin-left: 35%;
+    font-size: 12px;
+
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.profileInfo {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    margin-left: 30%;
+}
+
+
+/*content style*/
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.title1 {
+    width: 100%;
+}
+
+
+/*
+*
+* ==========================================
+* CALENDAR STYLE
+* ==========================================
+*
+*/
+.clearfix::after,
+.calendar ol::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* ================
+Calendar Styling */
+.calendar {
+    border-radius: 10px;
+}
+
+.month {
+    font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+    .month {
+        font-size: 3.5rem;
+    }
+}
+
+.calendar ol li {
+    float: left;
+    width: 14.28571%;
+}
+
+.calendar .day-names {
+    border-bottom: 1px solid #eee;
+}
+
+.calendar .day-names li {
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.calendar .days li {
+    border-bottom: 1px solid #eee;
+    min-height: 8rem;
+}
+
+.calendar .days li .date {
+    margin: 0.5rem 0;
+}
+
+.calendar .days li .event {
+    font-size: 0.75rem;
+    padding: 0.4rem;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 4rem;
+    margin-bottom: 1px;
+}
+
+.calendar .days li .event.span-2 {
+    width: 200%;
+}
+
+.calendar .days li .event.begin {
+    border-radius: 1rem 0 0 1rem;
+}
+
+.calendar .days li .event.end {
+    border-radius: 0 1rem 1rem 0;
+}
+
+.calendar .days li .event.clear {
+    background: none;
+}
+
+.calendar .days li:nth-child(n+29) {
+    border-bottom: none;
+}
+
+.calendar .days li.outside .date {
+    color: #ddd;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+body {
+    min-height: 100vh;
+    background-color: #3ca55c;
+    background-image: linear-gradient(147deg, #3ca55c 0%, #b5ac49 100%);
+}
+
+.roundImage{
+    background-image: url('../media/profile-placeholder.jpg');
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+    /**/
+    border-radius: 50%;
+}

@@ -1,0 +1,129 @@
+html {
+    background-image: url('../media/bglogin.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main {
+    background: rgba(255, 255, 255, 0.7);
+    width: 30vw;
+    height: 60vh;
+    margin: auto;
+    border-radius: 1.5em;
+}
+
+.sign {
+    padding-top: 40px;
+    color: #5c98f1;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.field {
+    width: 70%;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 1);
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+form.form1 {
+    padding-top: 40px;
+}
+
+
+.un:focus, .pass:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+
+}
+
+.loginBut {
+    width: 100px;
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: rgba(92, 152, 241, 1);
+    border: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 20px auto;
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    display: block;
+}
+
+.loginButton {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: rgba(92, 152, 241, 1);
+    border: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 20px 40%;
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    display: block;
+}
+
+#staffBut {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#adminBut {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#managerBut {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.loginDivBut {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forgot {
+    text-shadow: 1px 1px 3px rgba(117, 117, 117, 1);
+    color: #010002;
+    padding-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-shadow: 0 0 3px rgba(117, 117, 117, 0.12);
+    color: #e72334;
+    text-decoration: none;
+    font-weight: 700;
+
+}
+
+@media (max-width: 600px) {
+    .main {
+        border-radius: 0;
+    }
+}

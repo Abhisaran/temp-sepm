@@ -1,0 +1,403 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Staff view</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static '/main/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    {#    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">#}
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- sidebar -->
+    <nav id="sidebar">
+        <div class="d-flex sidebar-header align-items-center">
+            <h3 style="text-align:center;">Leave Portal</h3>
+        </div>
+
+        <img class="roundImage mx-auto d-block">
+        <div>
+            <p class="profileInfo">Welcome {{ user_string }}!</p>
+            {#            <p class="profileInfo">Age : 39 </p>#}
+            {#            <p class="profileInfo">{{ user_pass }}</p>#}
+            <p class="profileInfo">{{ mode }}</p>
+        </div>
+
+
+        <ul class="btn">
+            <button type="button" class="btn btn-info password" style="text-align:center;">
+                Change Password
+            </button>
+            <p></p>
+            <a href="{% url 'index' %}">
+                <button type="button" class="btn btn-info logout" style="text-align:center;">Sign Out</button>
+            </a>
+        </ul>
+    </nav>
+
+    <!-- content -->
+    <div class="container pilltab" id="pilltab">
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <!-- Hide sidbar toggle button -->
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Hide Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button"
+                            data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <!-- end hide sidebar button -->
+
+                    <!-- Tab Items -->
+                    <div class="tabItems" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto nav-tabs ">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#details">Leave Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#calendar">Leave
+                                    Request</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#history">Request History</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end tab items -->
+                </div>
+            </nav>
+
+
+            <div class="tab-content">
+
+                <!-- modal:: Put leave request- -->
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">New Leave Request</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body-->
+                            {#                            <form action="." method="POST">#}
+                            {#                                {% csrf_token %}#}
+                            {##}
+                            {#                                <div class="modal-body">#}
+                            {#                                    {{ form_leave }}#}
+                            {#                                </div>#}
+                            {#                                    <input type="submit" value="Login" class="loginBut">#}
+                            {##}
+                            {#                                <!-- dropdown -->#}
+                            {#                                <div class="dropdown">#}
+                            {#                                    <button type="button" class="btn btn-primary dropdown-toggle"#}
+                            {#                                            data-toggle="dropdown">#}
+                            {#                                        Select Leave Types#}
+                            {#                                    </button>#}
+                            {#                                    <div class="dropdown-menu">#}
+                            {#                                        <a class="dropdown-item" href="#l-1" data-toggle="collapse"> Annual#}
+                            {#                                            Leave </a>#}
+                            {#                                        <a class="dropdown-item" href="#l-2" data-toggle="collapse"> Carer’s#}
+                            {#                                            Leave</a>#}
+                            {#                                        <a class="dropdown-item" href="#l-3" data-toggle="collapse">Blood#}
+                            {#                                            Donor</a>#}
+                            {#                                        <a class="dropdown-item" href="#l-4" data-toggle="collapse">Sick Leave#}
+                            {#                                            with Certificate</a>#}
+                            {##}
+                            {#                                        <a class="dropdown-item" href="#l-5" data-toggle="collapse">Sick leave#}
+                            {#                                            without a medical certificate</a>#}
+                            {#                                        <a class="dropdown-item" href="#l-6" data-toggle="collapse">Parental#}
+                            {#                                            leave</a>#}
+                            {#                                        <a class="dropdown-item" href="#l-7" data-toggle="collapse">Unpaid#}
+                            {#                                            leave</a>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Annual-leave collapse" id="l-1">#}
+                            {#                                    <h5> Annual Leave</h5>#}
+                            {#                                    <p> (20 working days per year) - paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Carer-leave collapse" id="l-2">#}
+                            {#                                    <h5>Carer’s Leave</h5>#}
+                            {#                                    <p> (max. 15 working days per year) - paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Blood-leave collapse" id="l-3">#}
+                            {#                                    <h5>Blood Donor</h5>#}
+                            {#                                    <p> - paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Sick-leave collapse" id="l-4">#}
+                            {#                                    <h5>Sick Leave with Certificate</h5>#}
+                            {#                                    <p> (30 working days per year) - paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Sick-leave-2 collapse" id="l-5">#}
+                            {#                                    <h5>Sick leave without a medical certificate</h5>#}
+                            {#                                    <p> (max. 7 days per year, no more than 2 consecutive days) - paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Parental-leave collapse" id="l-6">#}
+                            {#                                    <h5>Parental leave</h5>#}
+                            {#                                    <p> - 24 weeks – paid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {#                                <div class="Unpaid-leave collapse" id="l-7">#}
+                            {#                                    <h5>Unpaid Leave</h5>#}
+                            {#                                    <p> - unpaid#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {##}
+                            {##}
+                            {#                                <!-- Script to hide content  -->#}
+                            {#                                <script>#}
+                            {#                                    $(document).ready(function () {#}
+                            {##}
+                            {#                                        $(".dropdown-item").click(function () {#}
+                            {#                                            $(".collapse").collapse('hide');#}
+                            {#                                        });#}
+                            {##}
+                            {#                                    });#}
+                            {#                                </script>#}
+                            {##}
+                            {#                                <!-- Modal footer -->#}
+                            {#                                <div class="modal-footer">#}
+                            {#                                    <input type="submit" value="Create" class="btn btn-danger"#}
+                            {#                                           data-dismiss="modal">#}
+                            {#                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close#}
+                            {#                                    </button>#}
+                            {#                                </div>#}
+                            {#                            </form>#}
+                            <form action="/main/{{ user_string }}-{{ user_string }}-{{ mode }}/" method="post">
+                                {% csrf_token %}
+                                {{ form_leave }}
+                                <input type="submit" value="submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- calendar tab pane -->
+                <div id="calendar" class="container tab-pane active">
+                    <div class="flex-row d-flex">
+
+
+                        <h2 class="mr-auto p-1"> Current Balance: {{ allowance }} </h2>
+                        <button type="button" class="btn btn-success new-leave p-1 align-self-center"
+                                data-toggle="modal" data-target="#myModal"> Put Leave Request
+                        </button>
+
+                    </div>
+
+
+                    <!-- Calendar -->
+                    <div class="calendar shadow bg-white p-5">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-calendar fa-3x mr-3"></i>
+                            <h3 class="month font-weight-bold mb-0 text-uppercase">October 2020</h3>
+                        </div>
+                        <p class="font-italic text-muted mb-5">No events for this day.</p>
+                        <ol class="day-names list-unstyled">
+                            <li class="font-weight-bold text-uppercase">Sun</li>
+                            <li class="font-weight-bold text-uppercase">Mon</li>
+                            <li class="font-weight-bold text-uppercase">Tue</li>
+                            <li class="font-weight-bold text-uppercase">Wed</li>
+                            <li class="font-weight-bold text-uppercase">Thu</li>
+                            <li class="font-weight-bold text-uppercase">Fri</li>
+                            <li class="font-weight-bold text-uppercase">Sat</li>
+                        </ol>
+
+                        <ol class="days list-unstyled">
+                            <li>
+                                <div class="date">1</div>
+                                <div class="event bg-success">Event with Long Name</div>
+                            </li>
+                            <li>
+                                <div class="date">2</div>
+                            </li>
+                            <li>
+                                <div class="date">3</div>
+                            </li>
+                            <li>
+                                <div class="date">4</div>
+                            </li>
+                            <li>
+                                <div class="date">5</div>
+                            </li>
+                            <li>
+                                <div class="date">6</div>
+                            </li>
+                            <li>
+                                <div class="date">7</div>
+                            </li>
+                            <li>
+                                <div class="date">8</div>
+                            </li>
+                            <li>
+                                <div class="date">9</div>
+                            </li>
+                            <li>
+                                <div class="date">10</div>
+                            </li>
+                            <li>
+                                <div class="date">11</div>
+                            </li>
+                            <li>
+                                <div class="date">12</div>
+                            </li>
+                            <li>
+                                <div class="date">13</div>
+                                <div class="event all-day begin span-2 bg-warning">Event Name</div>
+                            </li>
+                            <li>
+                                <div class="date">14</div>
+                            </li>
+                            <li>
+                                <div class="date">15</div>
+                                <div class="event all-day end bg-success">Event Name</div>
+                            </li>
+                            <li>
+                                <div class="date">16</div>
+                            </li>
+                            <li>
+                                <div class="date">17</div>
+                            </li>
+                            <li>
+                                <div class="date">18</div>
+                            </li>
+                            <li>
+                                <div class="date">19</div>
+                            </li>
+                            <li>
+                                <div class="date">20</div>
+                            </li>
+                            <li>
+                                <div class="date">21</div>
+                                <div class="event bg-primary">Event Name</div>
+                                <div class="event bg-success">Event Name</div>
+                            </li>
+                            <li>
+                                <div class="date">22</div>
+                                <div class="event bg-info">Event with Longer Name</div>
+                            </li>
+                            <li>
+                                <div class="date">23</div>
+                            </li>
+                            <li>
+                                <div class="date">24</div>
+                            </li>
+                            <li>
+                                <div class="date">25</div>
+                            </li>
+                            <li>
+                                <div class="date">26</div>
+                            </li>
+                            <li>
+                                <div class="date">27</div>
+                            </li>
+                            <li>
+                                <div class="date">28</div>
+                            </li>
+                            <li>
+                                <div class="date">29</div>
+                            </li>
+                            <li>
+                                <div class="date">30</div>
+                            </li>
+                            <li>
+                                <div class="date">31</div>
+                            </li>
+                            <li class="outside">
+                                <div class="date">1</div>
+                            </li>
+                            <li class="outside">
+                                <div class="date">2</div>
+                            </li>
+                            <li class="outside">
+                                <div class="date">3</div>
+                            </li>
+                            <li class="outside">
+                                <div class="date">4</div>
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- end calendar -->
+
+                </div>
+                <!-- end calendar tab-pane -->
+
+
+                <!-- request history  -->
+                <div id="history" class="container tab-pane ">
+                    <h2> Request History</h2>
+                    {% for l in lh %}
+                        <p>{{ l }}</p>
+                        <a href="/main/leave/{{ l }}{{ user_string }}*Close">Close</a>
+                    {% endfor %}
+{#                    <p>{{ lh }}</p>#}
+                </div>
+                <!-- end request history tab pane -->
+
+                <!-- request details  -->
+                <div id="details" class="container tab-pane ">
+                    <h2>Leave Details</h2>
+                    <ul>
+                        <li>Leave Allowance: {{ la }} days</li>
+                        <li>Annual Leave: {{ al }} days</li>
+                        <li>Carer Leave: {{ cl }} days</li>
+                        <li>Blood Donor Leave: {{ bdl }} days</li>
+                        <li>Sick Certificate Leave: {{ scl }} days</li>
+                        <li>Sick Leave without Certificate: {{ slc }} days</li>
+                        <li>Parental Leave: {{ pl }} days</li>
+                        <li>Unpaid Leave: {{ ul }} days</li>
+                    </ul>
+                </div>
+                <!-- end request history tab pane -->
+
+            </div>
+            <!-- end tab-content -->
+
+
+        </div><!-- end content div-->
+    </div>  <!-- end pill tab div-->
+</div><!-- //end wrapper -->
+
+
+<!--
+//active toggle for sidebar -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+            $("#sidebar").toggleClass("active");
+        });
+    });
+</script>
+</body>
+</html>
+

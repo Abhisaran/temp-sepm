@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Manager view</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static '/main/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    {#    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">#}
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- sidebar -->
+    <nav id="sidebar">
+        <div class="d-flex sidebar-header align-items-center">
+            <h3 style="text-align:center;">Staff Portal</h3>
+        </div>
+
+        <img class="roundImage mx-auto d-block">
+        <div>
+            <p class="profileInfo">Welcome {{ user_string }}!</p>
+            <p class="profileInfo">{{ mode }}</p>
+        </div>
+
+
+        <ul class="btn">
+            <button type="button" class="btn btn-info password" style="text-align:center;">
+                Change Password
+            </button>
+            <p></p>
+            <a href="{% url 'index' %}">
+                <button type="button" class="btn btn-info logout" style="text-align:center;">Sign Out</button>
+            </a>
+        </ul>
+    </nav>
+
+    <!-- content -->
+    <div class="container pilltab" id="pilltab">
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <!-- Hide sidbar toggle button -->
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Hide Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button"
+                            data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <!-- end hide sidebar button -->
+
+                    <!-- Tab Items -->
+                    <div class="tabItems" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto nav-tabs ">
+                            {#                            <li class="nav-item">#}
+                            {#                                <a class="nav-link" data-toggle="tab" href="#details">Leave Details</a>#}
+                            {#                            </li>#}
+                            {#                            <li class="nav-item">#}
+                            {#                                <a class="nav-link active" data-toggle="tab" href="#calendar">Leave#}
+                            {#                                    Requests</a>#}
+                            {#                            </li>#}
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#history">Request History</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end tab items -->
+                </div>
+            </nav>
+
+
+            <div class="tab-content">
+
+                <!-- modal:: Put leave request- -->
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- request history  -->
+                <div id="history" class="container tab-pane ">
+                    <h2> Request History</h2>
+                    {% for l in lh %}
+                        <p>{{ l }}</p>
+                        <a href="/main/leave/{{ l }}Accept">Accept</a>
+                        <a href="/main/leave/{{ l }}Reject">Reject</a>
+                    {% endfor %}
+                </div>
+                <!-- end request history tab pane -->
+
+
+            </div>
+            <!-- end tab-content -->
+
+
+        </div><!-- end content div-->
+    </div>  <!-- end pill tab div-->
+</div><!-- //end wrapper -->
+
+
+<!--
+//active toggle for sidebar -->
+
+</body>
+</html>
+

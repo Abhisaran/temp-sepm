@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {#        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">#}
+    <title>Roster - Sign in</title>
+</head>
+
+<body>
+<div class="main">
+    <p class="sign">Sign in</p>
+{#    <form class="form1" method="POST">{% csrf_token %}#}
+{#        <label>#}
+{#            <input class="field" type="text" placeholder="Username" id="user"/>#}
+{#        </label>#}
+{#        <label>#}
+{#            <input class="field" type="password" placeholder="Password" id="pass"/>#}
+{#        </label>#}
+{#        <div class="loginDivBut" onclick="">#}
+{#            <a href="{% url 'portal' %}" id="staffBut"><input type="submit" class="loginBut" id="staffBut" value="Staff"/></a>#}
+{#            <a href="{% url 'portal' %}" id="adminBut"><input type="submit" class="loginBut" id="adminBut" value="Admin"/></a>#}
+{#            <a href="{% url 'portal' %}" id="managerBut"><input type="submit" class="loginBut" id="managerBut" value="Manager"/></a>#}
+{#            <input type="submit"><a class="loginBut" id="adminBut" href="{% url 'portal' %}">Admin</a></input>#}
+{#            <input type="submit"><a class="loginBut" id="managerBut" href="{% url 'portal' %}">Manager</a></input>#}
+{#     #}
+{#        </div>#}
+{#        <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>#}
+{#    </form>#}
+
+    <form action="/login/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Login" class="loginBut">
+    </form>
+</div>
+</body>
+</html>
